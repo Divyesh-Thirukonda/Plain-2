@@ -3,6 +3,11 @@ let recordedChunks = [];
 let recordingStartTime;
 let timerInterval;
 
+// Get API URL based on environment
+const API_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000/api' 
+  : `${window.location.origin}/api`;
+
 const startBtn = document.getElementById('startBtn');
 const stopBtn = document.getElementById('stopBtn');
 const timer = document.getElementById('timer');
@@ -129,12 +134,15 @@ async function uploadRecording() {
   formData.append('description', descriptionInput.value);
 
   try {
-    const response = await fetch('http://localhost:3000/api/recordings/upload', {
+    const response = await fetch(`${API_URL}/recordings/upload`, {
       method: 'POST',
       body: formData
     });
 
-    if (!response.ok) throw new Error('Upload failed');
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `Upload failed with status ${response.status}`);
+    }
 
     const data = await response.json();
     status.textContent = '🎉 Upload successful! Processing will begin shortly.';

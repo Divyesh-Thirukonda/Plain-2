@@ -1,4 +1,7 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000/api' 
+  : `${window.location.origin}/api`;
+
 const currentUserId = 'user-demo-123'; // In production, this would come from auth
 
 const editProfileBtn = document.getElementById('editProfileBtn');

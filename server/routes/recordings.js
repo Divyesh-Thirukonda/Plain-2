@@ -31,20 +31,27 @@ const upload = multer({ storage });
 
 // Upload a new recording
 router.post('/upload', upload.single('video'), (req, res) => {
+  console.log('📹 Upload request received');
+  
   if (!req.file) {
+    console.error('❌ No file uploaded');
     return res.status(400).json({ error: 'No file uploaded' });
   }
 
   const recordingId = uuidv4();
   const { title, description } = req.body;
 
+  console.log(`📝 Recording metadata - ID: ${recordingId}, Title: ${title}`);
+
   db.run(
     `INSERT INTO recordings (id, title, description, file_path) VALUES (?, ?, ?, ?)`,
     [recordingId, title || 'Untitled Recording', description || '', req.file.path],
     function(err) {
       if (err) {
+        console.error('❌ Database error:', err);
         return res.status(500).json({ error: err.message });
       }
+      console.log(`✅ Recording saved: ${recordingId}`);
       res.json({
         id: recordingId,
         message: 'Recording uploaded successfully',

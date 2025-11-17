@@ -18,9 +18,6 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
-// Initialize database
-initializeDatabase();
-
 // Routes
 app.use('/api/recordings', recordingRoutes);
 app.use('/api/clips', clipRoutes);
@@ -36,6 +33,14 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Plain Onboarding API is running' });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+// Initialize database and start server
+initializeDatabase()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('❌ Failed to initialize database:', err);
+    process.exit(1);
+  });
