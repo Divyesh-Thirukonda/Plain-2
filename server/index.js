@@ -27,6 +27,11 @@ app.use('/api/clips', clipRoutes);
 app.use('/api/tickets', ticketRoutes);
 app.use('/api/gamification', gamificationRoutes);
 
+// Root route - redirect to recorder
+app.get('/', (req, res) => {
+  res.redirect('/index.html');
+});
+
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Plain Onboarding API is running' });
 });

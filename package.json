@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "Gamified onboarding system with workflow recording and searchable video clips",
   "scripts": {
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:server": "nodemon server/index.js",
-    "dev:client": "vite",
-    "build": "vite build",
+    "dev": "nodemon server/index.js",
     "start": "node server/index.js",
     "process:video": "node server/processors/videoProcessor.js"
   },
@@ -19,11 +16,7 @@
     "openai": "^4.20.0",
     "dotenv": "^16.3.1",
     "sqlite3": "^5.1.6",
-    "body-parser": "^1.20.2"
-  },
-  "devDependencies": {
-    "vite": "^5.0.0",
-    "nodemon": "^3.0.1",
-    "concurrently": "^8.2.2"
+    "body-parser": "^1.20.2",
+    "nodemon": "^3.0.1"
   }
 }

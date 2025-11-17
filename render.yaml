@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: plain-onboarding
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: PORT
+        value: 3000
+    disk:
+      name: plain-uploads
+      mountPath: /app/uploads
+      sizeGB: 1
