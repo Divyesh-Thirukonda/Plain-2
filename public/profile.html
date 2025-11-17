@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Plain Onboarding</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <nav class="navbar">
+      <h1>🎬 Plain Onboarding</h1>
+      <div class="nav-links">
+        <a href="/">Recorder</a>
+        <a href="/library.html">Library</a>
+        <a href="/tickets.html">Tickets</a>
+        <a href="/profile.html" class="active">Profile</a>
+      </div>
+    </nav>
+
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <div class="avatar-icon">👤</div>
+          <div class="level-badge" id="levelBadge">Lvl 1</div>
+        </div>
+        
+        <div class="profile-info">
+          <h2 id="username">Loading...</h2>
+          <p id="userRole">Role not set</p>
+          
+          <div class="profile-edit">
+            <button id="editProfileBtn" class="btn btn-secondary">Edit Profile</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-value" id="totalPoints">0</div>
+          <div class="stat-label">Total Points</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-value" id="ticketsCompleted">0</div>
+          <div class="stat-label">Tickets Done</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">📹</div>
+          <div class="stat-value" id="clipsWatched">0</div>
+          <div class="stat-label">Clips Watched</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-value" id="badgesEarned">0</div>
+          <div class="stat-label">Badges Earned</div>
+        </div>
+      </div>
+
+      <div class="progress-section">
+        <h3>Level Progress</h3>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        <p class="progress-text" id="progressText">0 / 100 points to next level</p>
+      </div>
+
+      <div class="badges-section">
+        <h3>🏆 Badges & Achievements</h3>
+        <div class="badges-grid" id="badgesGrid">
+          <!-- Badges will be loaded here -->
+        </div>
+      </div>
+
+      <div class="leaderboard-section">
+        <h3>🥇 Leaderboard</h3>
+        <div class="leaderboard-list" id="leaderboardList">
+          <!-- Leaderboard will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal" style="display: none;">
+      <div class="modal-content-form">
+        <button class="close-modal" onclick="document.getElementById('editProfileModal').style.display='none'">×</button>
+        <h3>Edit Profile</h3>
+        
+        <form id="editProfileForm">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="editUsername" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="editEmail">
+          </div>
+          
+          <div class="form-group">
+            <label>Role</label>
+            <select id="editRole">
+              <option value="frontend">Frontend Developer</option>
+              <option value="backend">Backend Developer</option>
+              <option value="devops">DevOps Engineer</option>
+              <option value="design">Designer</option>
+              <option value="product">Product Manager</option>
+              <option value="qa">QA Engineer</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="btn btn-success">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickets - Plain Onboarding</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <nav class="navbar">
+      <h1>🎬 Plain Onboarding</h1>
+      <div class="nav-links">
+        <a href="/">Recorder</a>
+        <a href="/library.html">Library</a>
+        <a href="/tickets.html" class="active">Tickets</a>
+        <a href="/profile.html">Profile</a>
+      </div>
+    </nav>
+
+    <div class="tickets-container">
+      <div class="tickets-header">
+        <h2>🎫 Starter Tickets</h2>
+        <p class="subtitle">Role-based tasks with linked video walkthroughs</p>
+      </div>
+
+      <div class="role-selector">
+        <label for="roleSelect">Select your role:</label>
+        <select id="roleSelect">
+          <option value="frontend">Frontend Developer</option>
+          <option value="backend">Backend Developer</option>
+          <option value="devops">DevOps Engineer</option>
+          <option value="design">Designer</option>
+          <option value="product">Product Manager</option>
+          <option value="qa">QA Engineer</option>
+        </select>
+      </div>
+
+      <div class="tickets-board">
+        <div class="ticket-column">
+          <h3>📋 Available</h3>
+          <div id="availableTickets" class="ticket-list">
+            <!-- Tickets will be loaded here -->
+          </div>
+        </div>
+
+        <div class="ticket-column">
+          <h3>⚡ In Progress</h3>
+          <div id="inProgressTickets" class="ticket-list">
+            <!-- Tickets will be loaded here -->
+          </div>
+        </div>
+
+        <div class="ticket-column">
+          <h3>✅ Completed</h3>
+          <div id="completedTickets" class="ticket-list">
+            <!-- Tickets will be loaded here -->
+          </div>
+        </div>
+      </div>
+
+      <div class="create-ticket-section">
+        <button id="createTicketBtn" class="btn btn-primary">+ Create New Ticket</button>
+      </div>
+    </div>
+
+    <!-- Create Ticket Modal -->
+    <div class="modal" id="createTicketModal" style="display: none;">
+      <div class="modal-content-form">
+        <button class="close-modal" onclick="document.getElementById('createTicketModal').style.display='none'">×</button>
+        <h3>Create Starter Ticket</h3>
+        
+        <form id="createTicketForm">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="ticketTitle" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="ticketDescription" rows="4" required></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Role</label>
+              <select id="ticketRole" required>
+                <option value="frontend">Frontend</option>
+                <option value="backend">Backend</option>
+                <option value="devops">DevOps</option>
+                <option value="design">Design</option>
+                <option value="product">Product</option>
+                <option value="qa">QA</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>Difficulty</label>
+              <select id="ticketDifficulty" required>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Points</label>
+            <input type="number" id="ticketPoints" value="10" min="1">
+          </div>
+          
+          <button type="submit" class="btn btn-success">Create Ticket</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Ticket Detail Modal -->
+    <div class="modal" id="ticketDetailModal" style="display: none;">
+      <div class="modal-content-detail">
+        <button class="close-modal" onclick="document.getElementById('ticketDetailModal').style.display='none'">×</button>
+        
+        <div class="ticket-detail">
+          <h3 id="detailTitle"></h3>
+          <div class="ticket-badges">
+            <span class="badge" id="detailRole"></span>
+            <span class="badge" id="detailDifficulty"></span>
+            <span class="badge points" id="detailPoints"></span>
+          </div>
+          
+          <p id="detailDescription"></p>
+          
+          <div class="related-clips-section">
+            <h4>📹 Related Clips</h4>
+            <div id="relatedClips" class="related-clips-list"></div>
+          </div>
+          
+          <div class="ticket-actions">
+            <button id="startTicketBtn" class="btn btn-primary">Start Ticket</button>
+            <button id="completeTicketBtn" class="btn btn-success" style="display: none;">Mark Complete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/tickets.js"></script>
+</body>
+</html>

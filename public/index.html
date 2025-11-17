@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plain Onboarding - Screen Recorder</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <nav class="navbar">
+      <h1>🎬 Plain Onboarding</h1>
+      <div class="nav-links">
+        <a href="/">Recorder</a>
+        <a href="/library.html">Library</a>
+        <a href="/tickets.html">Tickets</a>
+        <a href="/profile.html">Profile</a>
+      </div>
+    </nav>
+
+    <div class="recorder-container">
+      <h2>Workflow Recorder</h2>
+      <p class="subtitle">Capture your screen and mic to create onboarding content</p>
+
+      <div class="recording-controls">
+        <button id="startBtn" class="btn btn-primary">
+          <span class="icon">🎥</span> Start Recording
+        </button>
+        <button id="stopBtn" class="btn btn-danger" disabled>
+          <span class="icon">⏹️</span> Stop Recording
+        </button>
+        <div id="timer" class="timer">00:00</div>
+      </div>
+
+      <div id="status" class="status"></div>
+
+      <div id="preview" class="preview-container" style="display: none;">
+        <h3>Preview Recording</h3>
+        <video id="previewVideo" controls></video>
+        <div class="upload-form">
+          <input type="text" id="title" placeholder="Recording Title" required>
+          <textarea id="description" placeholder="Description (optional)" rows="3"></textarea>
+          <button id="uploadBtn" class="btn btn-success">
+            <span class="icon">⬆️</span> Upload & Process
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/recorder.js"></script>
+</body>
+</html>

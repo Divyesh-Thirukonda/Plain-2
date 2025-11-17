@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library - Plain Onboarding</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <nav class="navbar">
+      <h1>🎬 Plain Onboarding</h1>
+      <div class="nav-links">
+        <a href="/">Recorder</a>
+        <a href="/library.html" class="active">Library</a>
+        <a href="/tickets.html">Tickets</a>
+        <a href="/profile.html">Profile</a>
+      </div>
+    </nav>
+
+    <div class="library-container">
+      <div class="library-header">
+        <h2>📚 Clip Library</h2>
+        <p class="subtitle">Swipe through bite-sized onboarding clips</p>
+      </div>
+
+      <div class="filters">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="🔍 Search clips..." />
+        </div>
+        
+        <div class="filter-chips">
+          <button class="chip active" data-role="all">All</button>
+          <button class="chip" data-role="frontend">Frontend</button>
+          <button class="chip" data-role="backend">Backend</button>
+          <button class="chip" data-role="devops">DevOps</button>
+          <button class="chip" data-role="design">Design</button>
+          <button class="chip" data-role="product">Product</button>
+          <button class="chip" data-role="qa">QA</button>
+        </div>
+      </div>
+
+      <div class="clips-feed" id="clipsFeed">
+        <!-- Clips will be loaded here -->
+      </div>
+
+      <div class="loading" id="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading clips...</p>
+      </div>
+
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">📹</div>
+        <h3>No clips yet</h3>
+        <p>Record some workflows to get started!</p>
+        <a href="/" class="btn btn-primary">Start Recording</a>
+      </div>
+    </div>
+
+    <!-- Clip Modal for TikTok-style viewing -->
+    <div class="clip-modal" id="clipModal" style="display: none;">
+      <div class="modal-content">
+        <button class="close-modal" id="closeModal">×</button>
+        
+        <div class="clip-viewer">
+          <video id="modalVideo" controls autoplay></video>
+          
+          <div class="clip-info">
+            <h3 id="clipTitle"></h3>
+            <p id="clipTranscript"></p>
+            
+            <div class="clip-tags" id="clipTags"></div>
+            
+            <div class="clip-actions">
+              <button class="action-btn" id="likeBtn">
+                <span class="icon">❤️</span>
+                <span id="likeCount">0</span>
+              </button>
+              <button class="action-btn">
+                <span class="icon">👁️</span>
+                <span id="viewCount">0</span>
+              </button>
+              <button class="action-btn" id="shareBtn">
+                <span class="icon">🔗</span>
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-navigation">
+          <button class="nav-btn" id="prevClip">← Previous</button>
+          <button class="nav-btn" id="nextClip">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/library.js"></script>
+</body>
+</html>
